@@ -17,9 +17,9 @@ This phase translates our API Contracts and Database Schema into a functional Ex
 ## 🛠️ Implementation Steps
 
 **Part 1: Server Foundation**
-* [ ] Create server.js (Entry point).
-* [ ] Configure global error handling and 404 routes.
-* [ ] Test the database connection via src/config/db.js.
+* [✅] Create server.js (Entry point).
+* [✅] Configure global error handling and 404 routes.
+* [✅] Test the database connection via src/config/db.js.
 
 **Part 2: The Public API (Read-Only)**
 * [ ] Build models/projectModel.js (SQL queries).
