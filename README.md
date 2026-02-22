@@ -27,7 +27,8 @@ ali-albaqqal-portfolio/
 │   ├── api-contract-admin.md   # Secure CMS routes and JWT auth contracts
 │   ├── phase-1.md              # Project foundations & DB schema design
 │   ├── phase-2.md              # Environment & cloud DB configuration setup
-│   └── phase-3.md              # Endpoints & JSON data flow planning
+│   ├── phase-3.md              # Endpoints & JSON data flow planning
+│   └── phase-4.md              # Backend implementation roadmap (Express, SQL models, JWT routing)
 │
 ├── database/                   # SQL schemas and migrations
 │   └── schema.sql
