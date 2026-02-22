@@ -22,28 +22,35 @@ To provide a high-performance, interactive showcase of my professional experienc
 ```text
 ali-albaqqal-portfolio/
 │
-├── database/               # SQL schemas and migrations
+├── docs/                       # Project documentation & API contracts
+│   ├── api-contract-public.md  # JSON response schemas for frontend GET routes
+│   ├── api-contract-admin.md   # Secure CMS routes and JWT auth contracts
+│   ├── phase-1.md              # Project foundations & DB schema design
+│   ├── phase-2.md              # Environment & cloud DB configuration setup
+│   └── phase-3.md              # Endpoints & JSON data flow planning
+│
+├── database/                   # SQL schemas and migrations
 │   └── schema.sql
 │
-├── backend/                # Node.js / Express API
+├── backend/                    # Node.js / Express API
 │   ├── src/
-│   │   ├── config/         # Database connection (pg pool) & env setup
-│   │   ├── controllers/    # HTTP request/response logic
-│   │   ├── models/         # Raw SQL database queries
-│   │   ├── routes/         # Express API endpoints
-│   │   ├── middlewares/    # JWT auth & error handling
-│   │   └── utils/          # Helper functions
-│   ├── .env.example        # Template for environment variables
+│   │   ├── config/             # Database connection (pg pool) & env setup
+│   │   ├── controllers/        # HTTP request/response logic
+│   │   ├── models/             # Raw SQL database queries
+│   │   ├── routes/             # Express API endpoints
+│   │   ├── middlewares/        # JWT auth & error handling
+│   │   └── utils/              # Helper functions
+│   ├── .env.example            # Template for environment variables
 │   └── package.json
 │
-├── frontend/               # React.js / Vite / Tailwind CSS
+├── frontend/                   # React.js / Vite / Tailwind CSS
 │   ├── src/
-│   │   ├── api/            # Centralized API calls
-│   │   ├── assets/         # Static files & global styles
-│   │   ├── components/     # Reusable UI blocks
-│   │   ├── context/        # React Context (Auth state)
-│   │   ├── hooks/          # Custom React hooks
-│   │   └── pages/          # Public & Admin route views
+│   │   ├── api/                # Centralized API calls
+│   │   ├── assets/             # Static files & global styles
+│   │   ├── components/         # Reusable UI blocks
+│   │   ├── context/            # React Context (Auth state)
+│   │   ├── hooks/              # Custom React hooks
+│   │   └── pages/              # Public & Admin route views
 │   └── package.json
 │
 └── README.md
