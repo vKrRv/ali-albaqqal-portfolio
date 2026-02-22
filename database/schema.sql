@@ -1,4 +1,4 @@
--- Enable UUID generation (Standard practice for secure, unguessable IDs)
+-- Enable UUID generation
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- ==========================================
@@ -12,12 +12,11 @@ CREATE TABLE admins (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Expected to hold only one row (Singleton pattern)
 CREATE TABLE profile (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,
     title VARCHAR(255) NOT NULL,
-    bio TEXT, -- Markdown
+    bio TEXT,
     contact_email VARCHAR(255),
     github_url VARCHAR(255),
     linkedin_url VARCHAR(255),
@@ -32,9 +31,10 @@ CREATE TABLE profile (
 CREATE TABLE skills (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(100) UNIQUE NOT NULL,
-    category VARCHAR(100) NOT NULL, -- e.g., 'Web Technologies', 'AI & Machine Learning'
-    proficiency INTEGER CHECK (proficiency >= 1 AND proficiency <= 100), -- 1-100 scale
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    category VARCHAR(100) NOT NULL,
+    proficiency INTEGER CHECK (proficiency >= 1 AND proficiency <= 5), -- 1-5 UI scale
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ==========================================
@@ -43,14 +43,26 @@ CREATE TABLE skills (
 
 CREATE TABLE projects (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug VARCHAR(255) UNIQUE NOT NULL, -- SEO friendly routing (e.g., /projects/my-app)
     title VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
-    description TEXT, -- Markdown
-    image_url VARCHAR(255),
+    description TEXT,
+    thumbnail_url VARCHAR(255), -- Primary grid/hero image
     github_link VARCHAR(255),
     live_demo_link VARCHAR(255),
-    sort_order INTEGER DEFAULT 0, -- Useful for custom reordering in UI
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    is_featured BOOLEAN DEFAULT FALSE, -- Quick querying for landing page
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 1-to-Many gallery images for individual project pages
+CREATE TABLE project_images (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
+    image_url VARCHAR(255) NOT NULL,
+    alt_text VARCHAR(255), -- Accessibility & SEO
+    sort_order INTEGER DEFAULT 0
 );
 
 CREATE TABLE experiences (
@@ -60,8 +72,10 @@ CREATE TABLE experiences (
     start_date DATE NOT NULL,
     end_date DATE,
     is_current BOOLEAN DEFAULT FALSE,
-    description TEXT, -- Markdown
-    sort_order INTEGER DEFAULT 0
+    description TEXT,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE educations (
@@ -69,11 +83,13 @@ CREATE TABLE educations (
     institution VARCHAR(255) NOT NULL,
     degree VARCHAR(255) NOT NULL,
     major VARCHAR(255),
-    gpa NUMERIC(3,2), -- e.g., 4.16
+    gpa NUMERIC(3,2),
     location VARCHAR(255),
     start_date DATE NOT NULL,
     end_date DATE,
-    sort_order INTEGER DEFAULT 0
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE certifications (
@@ -82,7 +98,9 @@ CREATE TABLE certifications (
     issuer VARCHAR(255) NOT NULL,
     date_issued DATE NOT NULL,
     credential_url VARCHAR(255),
-    sort_order INTEGER DEFAULT 0
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE awards (
@@ -90,8 +108,10 @@ CREATE TABLE awards (
     title VARCHAR(255) NOT NULL,
     issuer VARCHAR(255) NOT NULL,
     date_awarded DATE NOT NULL,
-    description TEXT, -- Markdown
-    sort_order INTEGER DEFAULT 0
+    description TEXT,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE volunteering (
@@ -99,29 +119,28 @@ CREATE TABLE volunteering (
     role VARCHAR(255) NOT NULL,
     organization VARCHAR(255) NOT NULL,
     hours INTEGER,
-    description TEXT, -- Markdown
-    sort_order INTEGER DEFAULT 0
+    description TEXT,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ==========================================
 -- 4. JUNCTION TABLES (MANY-TO-MANY MAPPINGS)
 -- ==========================================
 
--- Maps Skills to Projects
 CREATE TABLE project_skills (
     project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
     skill_id UUID REFERENCES skills(id) ON DELETE CASCADE,
     PRIMARY KEY (project_id, skill_id)
 );
 
--- Maps Skills to Experiences
 CREATE TABLE experience_skills (
     experience_id UUID REFERENCES experiences(id) ON DELETE CASCADE,
     skill_id UUID REFERENCES skills(id) ON DELETE CASCADE,
     PRIMARY KEY (experience_id, skill_id)
 );
 
--- Maps Skills to Certifications
 CREATE TABLE certification_skills (
     certification_id UUID REFERENCES certifications(id) ON DELETE CASCADE,
     skill_id UUID REFERENCES skills(id) ON DELETE CASCADE,
