@@ -50,6 +50,7 @@ app.use('/api/experiences', require('./src/routes/experienceRoutes')) // Experie
 app.use('/api/educations', require('./src/routes/educationRoutes')) // Educations API
 app.use('/api/awards', require('./src/routes/awardRoutes')) // Awards API
 app.use('/api/certifications', require('./src/routes/certificationRoutes')) // Certifications API
+app.use('/api/volunteering', require('./src/routes/volunteeringRoutes')) // Volunteering API
 
 
 // 4. Not Found (404) Handler - This will catch any requests to undefined routes and return a 404 error.

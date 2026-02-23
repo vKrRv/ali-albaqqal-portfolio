@@ -26,7 +26,7 @@ This phase translates our API Contracts and Database Schema into a functional Ex
 * [✅] Build `controllers/projectController.js` (Req/Res logic).
 * [✅] Define `routes/projectRoutes.js`.
 * [✅] Register route in `server.js`.
-* [ ] Repeat for Experience, Skills, Education, etc.
+* [✅] Repeat for Experience, Skills, Education, etc.
 
 **Part 3: Authentication**
 * [ ] Setup admin table with a securely hashed password.
