@@ -19,6 +19,7 @@ const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Parse JSON bodies
 
+
 // 2. System Health & Database Connectivity - A simple endpoint to check if the server is running and can connect to the database
 app.get('/api/health', async (req, res) => {
     try { // If this succeeds, it proves our connection to Neon is active.
@@ -41,7 +42,10 @@ app.get('/api/health', async (req, res) => {
     }
 });
 
-// 3. Route Registration (Future API routes will be registered here)
+
+// 3. Route Registration
+app.use('/api/projects', require('./src/routes/projectRoutes')) // Projects API
+
 
 // 4. Not Found (404) Handler - This will catch any requests to undefined routes and return a 404 error.
 app.use((req, res) => {
@@ -50,6 +54,7 @@ app.use((req, res) => {
         message: `Route ${req.originalUrl} not found`
     })
 });
+
 
 // 5. Global Error Handler - This will catch any errors thrown in the route handlers and return a 500 error.
 app.use((err, req, res, next) => {
@@ -63,6 +68,7 @@ app.use((err, req, res, next) => {
     stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack // Only show the technical stack trace if we aren't in production
     });
 });
+
 
 // 6. Server Startup
 const PORT = process.env.PORT || 5000;
