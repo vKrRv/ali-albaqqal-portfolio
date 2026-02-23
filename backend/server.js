@@ -46,6 +46,7 @@ app.get('/api/health', async (req, res) => {
 // 3. Route Registration
 app.use('/api/projects', require('./src/routes/projectRoutes')) // Projects API
 app.use('/api/skills', require('./src/routes/skillRoutes')) // Skills API
+app.use('/api/experiences', require('./src/routes/experienceRoutes')) // Experiences API
 
 
 // 4. Not Found (404) Handler - This will catch any requests to undefined routes and return a 404 error.
