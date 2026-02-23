@@ -4,4 +4,6 @@ const projectController = require('../controllers/projectController')
 
 router.get('/', projectController.getProjects);
 
+router.get('/:slug', projectController.getProject);
+
 module.exports = router;
