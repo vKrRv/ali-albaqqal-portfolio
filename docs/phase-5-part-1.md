@@ -23,8 +23,8 @@ This phase focuses on building the public-facing React application. It will act 
 * [✅] Establish a scalable folder structure, explicitly separating `admin` and `public` views (`api`, `components/{public, admin}`, `pages/{public, admin}`, `hooks`, `assets`).
 
 **Part 2: The Service Layer (API Connectivity)**
-* [ ] Create `src/api/axiosInstance.js` to define the base API URL (`http://localhost:5000/api`).
-* [ ] Create API helper functions (e.g., `fetchProjects()`, `fetchSkills()`) to keep data-fetching logic clean and separated from UI components.
+* [✅] Create `src/api/axiosInstance.js` to define the base API URL (`http://localhost:5000/api`).
+* [✅] Create API helper functions (e.g., `fetchProjects()`, `fetchSkills()`) to keep data-fetching logic clean and separated from UI components.
 
 **Part 3: Layout & Routing**
 * [ ] Build global layout components: `<Navbar />` and `<Footer />`.
