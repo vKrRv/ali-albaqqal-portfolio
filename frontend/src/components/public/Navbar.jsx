@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav className='bg-slate-900 text-white p-20'>
-            <div className='flex justify-between items-center max-w-6xl mx-auto'>
+        <nav className='bg-slate-900 text-white p-10 px-12'>
+            <div className='flex justify-between items-center'>
                 <Link to='/' className='font-display text-6xl text-blue-500'>
                     {"<Ali />"}
                 </Link>
