@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { fetchProjects } from './api/publicService';
-import Navbar from './components/public/Navbar';
+import { Routes, Route } from 'react-router-dom';
 import MainLayout from './components/public/MainLayout';
-import Footer from './components/public/Footer';
+import { Home, Projects, ProjectDetails, Resume, NotFound } from './pages/public';
 
 
 function App() {
@@ -23,7 +23,15 @@ function App() {
   }, []); // The empty array [] ensures this only fires once on mount
 
   return (
-    <MainLayout />
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="projects/:slug" element={<ProjectDetails />} />
+        <Route path="resume" element={<Resume />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
