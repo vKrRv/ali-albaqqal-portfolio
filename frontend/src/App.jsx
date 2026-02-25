@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { fetchProjects } from './api/publicService';
 import Navbar from './components/public/Navbar';
+import Footer from './components/public/Footer';
+
 
 function App() {
   
@@ -40,6 +42,7 @@ function App() {
           </p>
         </div>
       </div>
+      <Footer />
       </>
   );
 }
