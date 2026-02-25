@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { fetchProjects } from './api/publicService';
 import Navbar from './components/public/Navbar';
+import MainLayout from './components/public/MainLayout';
 import Footer from './components/public/Footer';
 
 
@@ -22,28 +23,7 @@ function App() {
   }, []); // The empty array [] ensures this only fires once on mount
 
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center font-sans">
-        <h1 className="text-5xl font-bold text-blue-400 mb-4 font-display">
-          Frontend Initiated 🚀
-        </h1>
-        <p className="text-slate-300 text-lg">
-          React 19 + Vite 7 + Tailwind CSS v3 + React Router + Axios
-        </p>
-        
-        {/* New test message! */}
-        <div className="mt-8 p-6 bg-slate-800 rounded-lg border border-slate-700 text-center shadow-lg">
-          <p className="text-emerald-400 font-semibold animate-pulse text-xl">
-            📡 Testing API Connection...
-          </p>
-          <p className="text-slate-400 mt-2">
-            Open your browser console (F12 or Right Click -&gt; Inspect) to see your database data!
-          </p>
-        </div>
-      </div>
-      <Footer />
-      </>
+    <MainLayout />
   );
 }
 
