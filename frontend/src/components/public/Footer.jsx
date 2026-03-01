@@ -11,13 +11,27 @@ const CopyRight = () => {
 const Footer = () => {
 
     return (
-        <footer className="flex justify-between items-center p-6 px-8 bg-gray-900 text-white">
+        <footer className="flex flex-col gap-2 md:flex-row justify-between items-center md:px-6 p-4 bg-gray-900 text-white text-xs md:text-lg">
             <CopyRight />
-            <div className="flex gap-4">
-                <a href="https://LinkedIn.com/in/AliAlbaqqal" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/vKrRv" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <div className="flex md:gap-4">
+                <a
+                href="https://LinkedIn.com/in/AliAlbaqqal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-base text-blue-50"
+                >
+                    Linked<span className="text-blue-500">In</span>
+                </a>
+                <a
+                href="https://github.com/vKrRv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-base"
+                >
+                    GitHub
+                </a>
             </div>
-        </footer>  
+        </footer>
     );
 };
 
