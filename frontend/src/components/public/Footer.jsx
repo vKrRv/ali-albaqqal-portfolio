@@ -11,7 +11,7 @@ const CopyRight = () => {
 const Footer = () => {
 
     return (
-        <footer className="flex flex-col gap-2 md:flex-row justify-between items-center md:px-6 p-4 bg-gray-900 text-white text-xs md:text-lg">
+        <footer className="flex flex-col-reverse gap-2 md:flex-row justify-between items-center md:px-6 p-4 bg-gray-900 text-white text-xs md:text-lg">
             <CopyRight />
             <div className="flex md:gap-4">
                 <a
