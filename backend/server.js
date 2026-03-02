@@ -44,11 +44,12 @@ app.get('/api/health', async (req, res) => {
 
 
 // 3. Route Registration
+app.use('/api/profile', require('./src/routes/profileRoutes')) // Profile API
 app.use('/api/projects', require('./src/routes/projectRoutes')) // Projects API
 app.use('/api/skills', require('./src/routes/skillRoutes')) // Skills API
 app.use('/api/experiences', require('./src/routes/experienceRoutes')) // Experiences API
 app.use('/api/educations', require('./src/routes/educationRoutes')) // Educations API
-app.use('/api/awards', require('./src/routes/awardRoutes')) // Awards API
+app.use('/api/achievements', require('./src/routes/achievementRoutes')) // Achievements API
 app.use('/api/certifications', require('./src/routes/certificationRoutes')) // Certifications API
 app.use('/api/volunteering', require('./src/routes/volunteeringRoutes')) // Volunteering API
 

@@ -1,21 +1,21 @@
-const awardModel = require('../models/awardModel');
+const profileModel = require('../models/profileModel');
 
-const getAwards = async (req, res) => {
+const getProfile = async (req, res) => {
     try {
-        const awards = await awardModel.getAllAwards();
+        const profile = await profileModel.getProfile();
         res.status(200).json({
             status: 'success',
-            data: awards
+            data: profile
         });
     } catch (error) {
         res.status(500).json({
             status: 'error',
-            message: 'Failed to get awards',
+            message: 'Failed to get profile',
             error: error.message
         });
     }
 };
 
 module.exports = {
-    getAwards
+    getProfile
 };
