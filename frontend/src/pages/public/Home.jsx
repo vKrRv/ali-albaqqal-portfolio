@@ -1,21 +1,31 @@
+import { useProfile } from '../../hooks/useProfile';
+import LoadingCircleSpinner from '../../components/common/LoadingCircleSpinner';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 
 const Home = () => {
+
+    const { profile, isLoading, error } = useProfile();
+
+    if (isLoading) return <div><LoadingCircleSpinner /></div>;
+    if (error) return <div>Error: {error}</div>;
+
+    const { name, title, bio, resume_pdf_url } = profile;
+
     return (
         <section className='py-20 md:py-32'>
             <div className="max-w-4xl mx-auto px-4">
                 <h1 className="text-5xl md:text-7xl font-bold font-display">
-                    Ali Albaqqal
+                    {name}
                 </h1>
 
                 <TypeAnimation
                     sequence={[
-                        'Software Engineer',
+                        title[0],
                         800,
-                        'Full-Stack Developer',
+                        title[1],
                         800,
-                        'AI/ML Enthusiast',
+                        title[2],
                         800
                     ]}
                     wrapper="span"
@@ -26,7 +36,7 @@ const Home = () => {
                 />
 
                 <p className="text-lg md:text-xl text-slate-400 mt-4">
-                    My bio isn't bioing yet.
+                    {bio}
                 </p>
 
                 <div className='flex gap-4 mt-8 font-sans'>
@@ -34,10 +44,12 @@ const Home = () => {
                     className='bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors'>
                         Projects
                     </Link>
-                    <Link to='/resume' 
-                    className='bg-slate-600 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors'>
+                    <a
+                    href={resume_pdf_url}
+                    target='_blank'
+                    className='bg-slate-600 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors'>
                         Resume
-                    </Link>
+                    </a>
                 </div>
             </div>
         </section>
