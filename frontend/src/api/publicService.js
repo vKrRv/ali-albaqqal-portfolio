@@ -1,6 +1,12 @@
 import axiosInstance from "./axiosInstance";
 
 // Fetches all projects records from the backend.
+export const fetchProfile = async () => {
+    const response = await axiosInstance.get('/profile');
+    return response.data.data
+};
+
+// Fetches all projects records from the backend.
 export const fetchProjects = async () => {
     const response = await axiosInstance.get('/projects');
     return response.data.data
