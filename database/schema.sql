@@ -15,7 +15,7 @@ CREATE TABLE admins (
 CREATE TABLE profile (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(255)[] NOT NULL, -- Changed to array type
     bio TEXT,
     contact_email VARCHAR(255),
     github_url VARCHAR(255),
@@ -103,7 +103,7 @@ CREATE TABLE certifications (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE awards (
+CREATE TABLE achievements (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title VARCHAR(255) NOT NULL,
     issuer VARCHAR(255) NOT NULL,
