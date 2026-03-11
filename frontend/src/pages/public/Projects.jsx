@@ -1,5 +1,6 @@
 import { useProjects } from '../../hooks/useProject';
 import LoadingCircleSpinner from '../../components/common/LoadingCircleSpinner';
+import ProjectCard from '../../components/public/ProjectCard';
 
 const Projects = () => {
 
@@ -13,13 +14,16 @@ const Projects = () => {
             <h1 className="text-4xl font-bold mb-8">My Projects</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map(project => (
-                    <div key={project.id} className="bg-slate-800 p-6 rounded-xl">
-                        {/* Map data to ProjectCard here later */}
-                        <h2 className="text-xl font-bold text-white">{project.title}</h2>
-                        <p className="text-slate-400">{project.description}</p>
-                    </div>
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+                {projects.map(project => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+                {projects.map(project => (
+                    <ProjectCard key={project.id} project={project} />
                 ))}
             </div>
+            
         </div>
     );
 };

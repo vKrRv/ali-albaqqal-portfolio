@@ -3,3 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .card {
+        @apply bg-slate-800 rounded-lg overflow-hidden shadow-lg border border-slate-700/50 flex-col h-full p-6
+            transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl flex flex-col;
+    }
+};
