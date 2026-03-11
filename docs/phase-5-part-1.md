@@ -27,22 +27,22 @@ This phase focuses on building the public-facing React application. It will act 
 * [✅] Create API helper functions (e.g., `fetchProjects()`, `fetchSkills()`) to keep data-fetching logic clean and separated from UI components.
 
 **Part 3: Layout & Routing**
-* [ ] Build global layout components: `<Navbar />` and `<Footer />`.
-* [ ] Create a `MainLayout` wrapper to maintain consistent spacing/styling.
-* [ ] Define the core public routes in `App.jsx`:
+* [✅] Build global layout components: `<Navbar />` and `<Footer />`.
+* [✅] Create a `MainLayout` wrapper to maintain consistent spacing/styling.
+* [✅] Define the core public routes in `App.jsx`:
     * `/` (Home)
     * `/projects` (Project Grid View)
     * `/projects/:slug` (Single Project Deep-Dive)
     * `/resume` (Timeline of Experience, Education, and Skills)
 
 **Part 4: Building the Views (UI Components)**
-* [ ] **Home Page:** Hero section, a snippet of featured projects, and a quick bio.
+* [✅] **Home Page:** Hero section, a snippet of featured projects, and a quick bio.
 * [ ] **Projects Page:** A responsive grid of project cards mapping over the `/api/projects` data.
 * [ ] **Project Detail Page:** Dynamic page fetching by `slug`, rendering the markdown description, mapped skills, and links.
 * [ ] **Resume Page:** Visual timelines rendering `/api/experiences` and `/api/educations`.
 * [ ] **Skills Section:** Visually appealing skill badges categorized dynamically.
 
 **Part 5: Polish & UX**
-* [ ] Add Loading states (Spinners or Skeletons) while fetching database info.
+* [✅] Add Loading states (Spinners or Skeletons) while fetching database info.
 * [ ] Add Error boundaries (Fallback UI if the backend request fails).
-* [ ] Ensure 100% Mobile Responsiveness using Tailwind utility classes.
+* [ ] Ensure 100% Mobile Responsiveness using Tailwind utility class.
