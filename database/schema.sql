@@ -47,6 +47,7 @@ CREATE TABLE projects (
     title VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
     description TEXT,
+    short_description VARCHAR(500), -- Added short description for UI cards
     thumbnail_url VARCHAR(255), -- Primary grid/hero image
     github_link VARCHAR(255),
     live_demo_link VARCHAR(255),
