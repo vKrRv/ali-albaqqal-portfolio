@@ -12,6 +12,12 @@ export const fetchProjects = async () => {
     return response.data.data
 };
 
+// Fetches single project record by slug from the backend.
+export const fetchProjectBySlug = async (slug) => {
+    const response = await axiosInstance.get(`/projects/${slug}`);
+    return response.data.data
+};
+
 // Fetches all skills records from the backend.
 export const fetchSkills = async () => {
     const response = await axiosInstance.get('/skills');
